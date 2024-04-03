@@ -1,6 +1,14 @@
-// TODO: USING ASYNC-AWAIT
-// const asyncHandler = (fn) => async {() => {}}
-const asyncHandler = (requestHandler) => async (req, res, next) => {
+//TODO: USING PROMISE
+const asyncHandler = (requestHandler) => {
+  return (req, res, next) => {Promise
+    .resolve(requestHandler(req, res, next))
+    .catch((error) => next(error));
+  };
+};
+
+/* TODO: USING ASYNC-AWAIT
+// const asyncHandler2 = (fn) => async {() => {}}
+const asyncHandler2 = (requestHandler) => async (req, res, next) => {
   try {
     await requestHandler(req, res, next);
   } catch (error) {
@@ -11,15 +19,6 @@ const asyncHandler = (requestHandler) => async (req, res, next) => {
     next(error)
   }
 }
-
-/* TODO: USING PROMISE
-const asyncHandler2 = (requestHandler) => {
-  (req, res, next) => {
-    return Promise
-    .then(requestHandler(req, res, next))
-    .catch(error => next(error))
-  }
-}
 */
 
-export {asyncHandler}
+export { asyncHandler };

@@ -2,13 +2,13 @@ class ApiError extends Error {
   constructor(
     message = 'API ERROR HAPPENED',
     errors = [],
-    status = 500,
+    statusCode = 500,
     stack = ''
     ) {
     super(message)
     this.message = message
     this.errors = errors
-    this.status = status
+    this.statusCode = statusCode
     this.data = null
     this.success = false
 
@@ -28,6 +28,6 @@ export {ApiError}
    *
    * @param {string} message - The error message (default: 'API ERROR HAPPENED')
    * @param {Array} errors - An array of errors (default: [])
-   * @param {number} status - The status code (default: 500)
+   * @param {number} statusCode - The statusCode code (default: 500)
    * @param {string} stack - The stack trace (default: '')
    */
